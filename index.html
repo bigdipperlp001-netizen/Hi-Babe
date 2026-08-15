@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Monthsary ❤️</title>
+<style>
+  :root{
+    --bg:#fff7f8; --card:#ffffff; --text:#3b252b; --muted:#8a6870;
+    --accent:#e85d75; --accent2:#ff9aaa; --shadow:0 15px 45px rgba(120,40,60,.12);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(180deg,#fff7f8,#fff);color:var(--text)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(255,255,255,.78);backdrop-filter:blur(12px);border-bottom:1px solid #f4dce1}
+  nav .inner{max-width:1050px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  .brand{font-weight:800;color:var(--accent)}
+  nav a{color:var(--text);text-decoration:none;margin-left:18px;font-size:.92rem}
+  section{max-width:1050px;margin:auto;padding:90px 20px}
+  .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:110px;position:relative;overflow:hidden}
+  .hero:before,.hero:after{content:"❤";position:absolute;color:#ffb6c1;opacity:.18;font-size:10rem;animation:float 5s ease-in-out infinite}
+  .hero:before{left:3%;top:20%}.hero:after{right:4%;bottom:15%;animation-delay:1.5s}
+  .eyebrow{color:var(--accent);font-weight:800;letter-spacing:2px;text-transform:uppercase}
+  h1{font-size:clamp(3rem,9vw,7rem);line-height:.95;margin:15px 0;background:linear-gradient(135deg,#d83f5b,#ff91a2);-webkit-background-clip:text;color:transparent}
+  h2{font-size:2.2rem;margin-bottom:12px}
+  p{line-height:1.75;color:var(--muted)}
+  .hero p{max-width:650px;margin:0 auto 25px;font-size:1.1rem}
+  .btn{display:inline-block;border:0;border-radius:999px;background:var(--accent);color:white;padding:13px 22px;text-decoration:none;font-weight:750;cursor:pointer;box-shadow:0 8px 20px rgba(232,93,117,.25)}
+  .btn.secondary{background:white;color:var(--accent);border:1px solid #f0c7cf}
+  .center{text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid #f5dfe3;border-radius:24px;padding:25px;box-shadow:var(--shadow)}
+  .card h3{margin-top:0}
+  .timeline{display:grid;gap:16px;max-width:750px;margin:30px auto}
+  .timeline .card{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start}
+  .date{color:var(--accent);font-weight:800}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;background:#ffe5e9}
+  .letter{max-width:760px;margin:auto;font-size:1.08rem}
+  .counter{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}
+  .countbox{min-width:100px;padding:20px;border-radius:20px;background:white;border:1px solid #f2d9de;box-shadow:var(--shadow)}
+  .countbox strong{display:block;font-size:2rem;color:var(--accent)}
+  footer{text-align:center;padding:50px 20px;color:var(--muted)}
+  .edit-note{background:#fff1f4;border:1px dashed #ef9aaa;border-radius:16px;padding:15px;margin:20px auto;max-width:800px}
+  @keyframes float{50%{transform:translateY(-20px) rotate(8deg)}}
+  @media(max-width:750px){
+    nav .links{display:none}.grid,.gallery{grid-template-columns:1fr 1fr}
+    .timeline .card{grid-template-columns:1fr}.date{margin-bottom:-10px}
+  }
+  @media(max-width:480px){.grid,.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="brand">♡ OUR STORY</div>
+    <div class="links">
+      <a href="#story">Story</a><a href="#memories">Memories</a><a href="#letter">Letter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow" id="eyebrow">Happy Monthsary</div>
+    <h1 id="title">My Love ❤️</h1>
+    <p id="subtitle">Another month with you, another month of memories I will always treasure.</p>
+    <div class="counter" id="counter"></div>
+    <a class="btn" href="#letter">Read My Letter 💌</a>
+  </div>
+</header>
+
+<section id="story">
+  <div class="center">
+    <div class="eyebrow">Our Journey</div>
+    <h2>How Our Story Began</h2>
+    <p></p>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="memories">
+  <div class="center">
+    <div class="eyebrow">Our Memories</div>
+    <h2>Little Moments, Big Memories 📸</h2>
+    <p></p>
+  </div>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section id="letter">
+  <div class="card letter">
+    <div class="eyebrow">A Letter For You</div>
+    <h2 id="letterTitle">To My Favorite Person ❤️</h2>
+    <div id="letterText"></div>
+  </div>
+</section>
+
+<section>
+  <div class="card center">
+    <div class="eyebrow">One More Thing</div>
+    <h2 id="surpriseTitle">I Love You More Every Day.</h2>
+    <p id="surpriseText" style="display:none;"></p>
+    
+    <button class="btn" onclick="showSurprise()">Open Your Surprise 💝</button>
+  </div>
+</section>
+
+<footer>
+  Made with love, just for you. ❤️
+</footer>
+
+<script>
+/* =========================================================
+   EDIT EVERYTHING HERE
+   Change the text, dates, colors, photos, and memories.
+   You do NOT need to edit the HTML above.
+   ========================================================= */
+
+const DATA = {
+  girlfriendName: "Babe♥️",
+  monthsaryLabel: "Happy Monthsary",
+  subtitle: "Today is our first month that we're officially couple, A month have passed and those days is a memories I will always treasure",
+  relationshipStart: "2026-07-26", // YYYY-MM-DD
+
+  letterTitle: "To My Favorite Person ❤️",
+  letter: `May-may
+
+  Hi Babe♥️,
+
+  First month of being officially you're my Woman and I'm your Man, Hindi pa rin ako makapaniwala na tayo na talaga.
+
+  Being chosen by you and being loved by you was the most wonderful thing that happened in my life. I want you to know na sobrang saya ko as in, tuwing naiisip ko na Girlfriend na kita kinikilig parin ako ng paulit ulit, Ung time na sinabi mo na Sinasagot na kita, Sobrang linaw non sa isip ko at paulit ulit parin talaga akong kinikilig habang nagp'flashback iyon sa isip ko.
+
+  Salamat dahil ako ang pinili mo,Salamat sa tiwala na binigay mo sakin, sa mga tawanan, mga kwentuhan, at mga memories na binubuo nating dalawa.
+
+  Hindi ko alam kung ano ang tama at perpektong salita para ma express ang nararamdaman ko, Lagi mong tatandaan na sobrang halaga mo sakin,at habang tumatagal ay lalong lumalalim ang pagmamahal ko sayo, asahan mo na lagi akong nasa tabi mo at susuporta sayo,madali man o mahirap ang sitwasyon kasama mo ako.
+
+  Patuloy akong mag sisikap at patuloy tayong mag g'grow, para sa future nating dalawa.
+
+  Sobrang grateful ako na ikaw ang babae na nagpatibok ng sobra sa puso ko. marami pang buwan at taon ang tatahakin natin ng magkasama.
+
+  Mahal na mahal kita`,
+
+  surpriseTitle: "I Love You More Every Day.",
+  surpriseText: "Kahit gaano pa kadaming buwan at araw ang dumaan, Ikaw parin ang paulit ulit kong pipiliin, Happy monthsary Babe ❤️",
+  surpriseImage: "images/surprise.jpg",
+
+  milestones: [
+    {date:"The Beginning", title:"The day our story started", text:"Naalala mo ba yung gabi na pinakilala ako ni Jas at Daniel sayo. First time na ni reto ako ni Pare ko, Hindi ko alam ang sasabihin ko at paano ko ipapakilala ang sarili ko, Napaka formal pa ng pakilala ko nuon and kabado ako talaga. Nag message ako sayo after ng video call natin to know you more and nagtuloy-tuloy na. Araw-araw na tayong nag uusap and sobrang natuwa ako sa first time na ako ung nag engage ng video call natin. We talk for hours and nag laro pa tayo ng ML."},
+    {date:"Our First Memory", title:"A moment I'll never forget", text:"Hindi ko malilimutan ung First date natin and that first date is yon din ang unang pagkikita natin, nangangatal pa ang kamay ko nhng formal ulit akong nagpakilala at kumamay sayo. Yung unang gabi na nag tambay tayo sa tabi ng daan para pagmasdan ang Ganda ng liwanag sa gabi. Ang unang roadtrip natin nung gabi nayon, Ang unang yakap mo sakin dahil sa takot mo na tumalon yung palaka sa daan."},
+    
+  ],
+
+  /* Use image URLs, or replace these with your own uploaded image links. */
+  photos: [
+    {src:"images/us2.jpg", alt:"Love"},
+    {src:"images/us3.jpg", alt:"Flowers"},
+    {src:"images/us1.jpg", alt:"Couple"},
+    {src:"images/us4.jpg", alt:"First"}
+  ]
+};
+
+document.getElementById("eyebrow").textContent = DATA.monthsaryLabel;
+document.getElementById("title").textContent = DATA.girlfriendName + " ❤️";
+document.getElementById("subtitle").textContent = DATA.subtitle;
+document.getElementById("letterTitle").textContent = DATA.letterTitle;
+document.getElementById("letterText").innerHTML = DATA.letter.split("\n\n").map(p => `<p>${p.replace(/\n/g,"<br>")}</p>`).join("");
+document.getElementById("surpriseTitle").textContent = DATA.surpriseTitle;
+document.getElementById("surpriseText").textContent = DATA.surpriseText;
+
+document.getElementById("timeline").innerHTML = DATA.milestones.map(m => `
+  <div class="card">
+    <div class="date">${m.date}</div>
+    <div><h3>${m.title}</h3><p>${m.text}</p></div>
+  </div>
+`).join("");
+
+document.getElementById("gallery").innerHTML = DATA.photos.map(p => `
+  <img src="${p.src}" alt="${p.alt}" loading="lazy">
+`).join("");
+
+function updateCounter(){
+  const start = new Date(DATA.relationshipStart + "T00:00:00");
+  const now = new Date();
+  let totalMonths = (now.getFullYear()-start.getFullYear())*12 + now.getMonth()-start.getMonth();
+  if(now.getDate() < start.getDate()) totalMonths--;
+  if(totalMonths < 0) totalMonths = 0;
+  const anniversary = new Date(start);
+  anniversary.setMonth(start.getMonth()+totalMonths);
+  let days = Math.floor((now-anniversary)/86400000);
+  const years = Math.floor(totalMonths/12);
+  const months = totalMonths%12;
+  document.getElementById("counter").innerHTML = `
+    <div class="countbox"><strong>${years}</strong>Years</div>
+    <div class="countbox"><strong>${months}</strong>Months</div>
+    <div class="countbox"><strong>${days}</strong>Days</div>`;
+}
+updateCounter();
+
+function showSurprise(){
+  const msg = document.createElement("div");
+  msg.style.cssText="position:fixed;inset:0;background:rgba(50,15,25,.72);display:grid;place-items:center;z-index:99;padding:25px";
+  msg.innerHTML=`<div class="card center" style="max-width:520px"><div style="font-size:4rem">💖</div><h2>${DATA.girlfriendName},</h2><p>${DATA.surpriseText}</p><button class="btn" onclick="this.closest('div[style]').remove()">Close ❤️</button></div>`;
+  document.body.appendChild(msg);
+}
+</script>
+</body>
+</html>
