@@ -42,6 +42,10 @@
   .countbox strong{display:block;font-size:2rem;color:var(--accent)}
   footer{text-align:center;padding:50px 20px;color:var(--muted)}
   .edit-note{background:#fff1f4;border:1px dashed #ef9aaa;border-radius:16px;padding:15px;margin:20px auto;max-width:800px}
+  
+  /* Surprise Image Styling */
+  .surprise-img{width:100%;max-height:300px;object-fit:cover;border-radius:16px;margin:15px 0;box-shadow:0 8px 20px rgba(0,0,0,.1)}
+
   @keyframes float{50%{transform:translateY(-20px) rotate(8deg)}}
   @media(max-width:750px){
     nav .links{display:none}.grid,.gallery{grid-template-columns:1fr 1fr}
@@ -102,7 +106,6 @@
     <div class="eyebrow">One More Thing</div>
     <h2 id="surpriseTitle">I Love You More Every Day.</h2>
     <p id="surpriseText" style="display:none;"></p>
-    
     <button class="btn" onclick="showSurprise()">Open Your Surprise 💝</button>
   </div>
 </section>
@@ -112,12 +115,6 @@
 </footer>
 
 <script>
-/* =========================================================
-   EDIT EVERYTHING HERE
-   Change the text, dates, colors, photos, and memories.
-   You do NOT need to edit the HTML above.
-   ========================================================= */
-
 const DATA = {
   girlfriendName: "Babe♥️",
   monthsaryLabel: "Happy Monthsary",
@@ -145,15 +142,13 @@ const DATA = {
 
   surpriseTitle: "I Love You More Every Day.",
   surpriseText: "Kahit gaano pa kadaming buwan at araw ang dumaan, Ikaw parin ang paulit ulit kong pipiliin, Happy monthsary Babe ❤️",
-  surpriseImage: "images/surprise.jpg",
+  surpriseImage: "/Hi-Babe/us1.jpg", // Make sure this path points to your surprise image!
 
   milestones: [
     {date:"The Beginning", title:"The day our story started", text:"Naalala mo ba yung gabi na pinakilala ako ni Jas at Daniel sayo. First time na ni reto ako ni Pare ko, Hindi ko alam ang sasabihin ko at paano ko ipapakilala ang sarili ko, Napaka formal pa ng pakilala ko nuon and kabado ako talaga. Nag message ako sayo after ng video call natin to know you more and nagtuloy-tuloy na. Araw-araw na tayong nag uusap and sobrang natuwa ako sa first time na ako ung nag engage ng video call natin. We talk for hours and nag laro pa tayo ng ML."},
-    {date:"Our First Memory", title:"A moment I'll never forget", text:"Hindi ko malilimutan ung First date natin and that first date is yon din ang unang pagkikita natin, nangangatal pa ang kamay ko nhng formal ulit akong nagpakilala at kumamay sayo. Yung unang gabi na nag tambay tayo sa tabi ng daan para pagmasdan ang Ganda ng liwanag sa gabi. Ang unang roadtrip natin nung gabi nayon, Ang unang yakap mo sakin dahil sa takot mo na tumalon yung palaka sa daan."},
-    
+    {date:"Our First Memory", title:"A moment I'll never forget", text:"Hindi ko malilimutan ung First date natin and that first date is yon din ang unang pagkikita natin, nangangatal pa ang kamay ko nhng formal ulit akong nagpakilala at kumamay sayo. Yung unang gabi na nag tambay tayo sa tabi ng daan para pagmasdan ang Ganda ng liwanag sa gabi. Ang unang roadtrip natin nung gabi nayon, Ang unang yakap mo sakin dahil sa takot mo na tumalon yung palaka sa daan."}
   ],
 
-  /* Use image URLs, or replace these with your own uploaded image links. */
   photos: [
     {src:"/Hi-Babe/us2.jpg", alt:"Love"},
     {src:"/Hi-Babe/us3.jpg", alt:"Flowers"},
@@ -202,7 +197,19 @@ updateCounter();
 function showSurprise(){
   const msg = document.createElement("div");
   msg.style.cssText="position:fixed;inset:0;background:rgba(50,15,25,.72);display:grid;place-items:center;z-index:99;padding:25px";
-  msg.innerHTML=`<div class="card center" style="max-width:520px"><div style="font-size:4rem">💖</div><h2>${DATA.girlfriendName},</h2><p>${DATA.surpriseText}</p><button class="btn" onclick="this.closest('div[style]').remove()">Close ❤️</button></div>`;
+  
+  // Checks if surpriseImage exists and builds image markup
+  const imageHtml = DATA.surpriseImage ? `<img src="${DATA.surpriseImage}" alt="Surprise Photo" class="surprise-img">` : '';
+
+  msg.innerHTML=`
+    <div class="card center" style="max-width:520px; width:100%;">
+      <div style="font-size:3rem">💖</div>
+      <h2>${DATA.girlfriendName},</h2>
+      ${imageHtml}
+      <p style="margin-top:10px;">${DATA.surpriseText}</p>
+      <button class="btn" style="margin-top:15px;" onclick="this.closest('div[style*=\\'position:fixed\\']').remove()">Close ❤️</button>
+    </div>
+  `;
   document.body.appendChild(msg);
 }
 </script>
