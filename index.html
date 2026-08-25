@@ -142,7 +142,7 @@ const DATA = {
 
   surpriseTitle: "I Love You More Every Day.",
   surpriseText: "Kahit gaano pa kadaming buwan at araw ang dumaan, Ikaw parin ang paulit ulit kong pipiliin, Happy monthsary Babe ❤️",
-  surpriseImage: "/Hi-Babe/us2.jpg", // Make sure this path points to your surprise image!
+  surpriseImage: "/Hi-Babe/us2.jpg", 
 
   milestones: [
     {date:"The Beginning", title:"The day our story started", text:"Naalala mo ba yung gabi na pinakilala ako ni Jas at Daniel sayo. First time na ni reto ako ni Pare ko, Hindi ko alam ang sasabihin ko at paano ko ipapakilala ang sarili ko, Napaka formal pa ng pakilala ko nuon and kabado ako talaga. Nag message ako sayo after ng video call natin to know you more and nagtuloy-tuloy na. Araw-araw na tayong nag uusap and sobrang natuwa ako sa first time na ako ung nag engage ng video call natin. We talk for hours and nag laro pa tayo ng ML."},
@@ -196,21 +196,25 @@ updateCounter();
 
 function showSurprise(){
   const msg = document.createElement("div");
-  msg.style.cssText="position:fixed;inset:0;background:rgba(50,15,25,.72);display:grid;place-items:center;z-index:99;padding:25px";
+  msg.id = "surpriseModal";
+  msg.style.cssText = "position:fixed;inset:0;background:rgba(50,15,25,.72);display:grid;place-items:center;z-index:99;padding:25px";
   
-  // Checks if surpriseImage exists and builds image markup
   const imageHtml = DATA.surpriseImage ? `<img src="${DATA.surpriseImage}" alt="Surprise Photo" class="surprise-img">` : '';
 
-  msg.innerHTML=`
+  msg.innerHTML = `
     <div class="card center" style="max-width:520px; width:100%;">
       <div style="font-size:3rem">💖</div>
       <h2>${DATA.girlfriendName},</h2>
       ${imageHtml}
       <p style="margin-top:10px;">${DATA.surpriseText}</p>
-      <button class="btn" style="margin-top:15px;" onclick="this.closest('div[style*=\\'position:fixed\\']').remove()">Close ❤️</button>
+      <button class="btn" style="margin-top:15px;" id="closeSurpriseBtn">Close ❤️</button>
     </div>
   `;
   document.body.appendChild(msg);
+
+  document.getElementById("closeSurpriseBtn").onclick = function() {
+    msg.remove();
+  };
 }
 </script>
 </body>
